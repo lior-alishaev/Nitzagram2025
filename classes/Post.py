@@ -8,9 +8,19 @@ class Post:
     """
     A class used to represent post on Nitzagram
     """
-    def __init__(self): #TODO: add parameters
+    def __init__(self, username, location, description): #TODO: add parameters
         #TODO: write me!
-        pass
+        self.username = username
+        self.location = location
+        self.description = description
+        self.counter_likes = 0
+        self.comments = []
+
+    def add_like(self):
+        self.counter_likes += 1
+
+    def add_comment(self, text):
+        self.comments.append(text)
 
     def display(self):
         """
@@ -20,7 +30,12 @@ class Post:
         :return: None
         """
         # TODO: write me!
-        pass
+        screen.blit(self.username, [USER_NAME_X_POS, USER_NAME_Y_POS])
+        screen.blit(self.location, [LOCATION_TEXT_X_POS, LOCATION_TEXT_Y_POS])
+        screen.blit(self.description, [DESCRIPTION_TEXT_X_POS, DESCRIPTION_TEXT_Y_POS])
+        screen.blit(self.counter_likes, [LIKE_TEXT_X_POS, LIKE_TEXT_Y_POS])
+        screen.blit(self.comments, [FIRST_COMMENT_X_POS, FIRST_COMMENT_Y_POS])
+
 
 
     def display_comments(self):
