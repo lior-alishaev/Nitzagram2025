@@ -15,12 +15,13 @@ class Post:
         self.description = description
         self.counter_likes = 0
         self.comments = []
+        self.comments_display_index = 0
 
     def add_like(self):
         self.counter_likes += 1
 
     def add_comment(self, text):
-        self.comments.append()
+        self.comments.append(Comment(text))
 
     def display(self):
         """

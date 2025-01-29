@@ -8,17 +8,16 @@ def main():
     pygame.init()
 
     # Change the title of the window
-    pygame.display.set_caption('Nitzagram')
+    pygame.display.set_caption('First Project - Instagram')
 
     clock = pygame.time.Clock()
 
     # Set up background image
     background = pygame.image.load('Images/background.png')
-    background = pygame.transform.scale(background,
-                                        (WINDOW_WIDTH, WINDOW_HEIGHT))
+    background = pygame.transform.scale(background,(WINDOW_WIDTH, WINDOW_HEIGHT))
+
 
     # TODO: add a post here
-
     running = True
     while running:
         # Grabs events such as key pressed, mouse pressed and so.
@@ -26,6 +25,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+
 
         # Display the background, presented Image, likes, comments, tags and location(on the Image)
         screen.fill(BLACK)
