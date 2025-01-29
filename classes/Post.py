@@ -1,5 +1,5 @@
 import pygame
-
+from Comment import *
 from constants import *
 from helpers import screen
 
@@ -20,7 +20,7 @@ class Post:
         self.counter_likes += 1
 
     def add_comment(self, text):
-        self.comments.append(text)
+        self.comments.append()
 
     def display(self):
         """
