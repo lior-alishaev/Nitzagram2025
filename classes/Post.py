@@ -1,8 +1,7 @@
 import pygame
 from Comment import *
 from constants import *
-from helpers import screen
-
+from helpers import *
 
 class Post:
     """
@@ -23,21 +22,26 @@ class Post:
     def add_comment(self, text):
         self.comments.append(Comment(text))
 
-    def display(self):
-        """
-        Display the Post image/Text, description, location, likes and comments
-        on screen
+    def display(self, screen):
+        self.display_content(screen)
+        self.display_header(screen)
+        self.display_likes(screen)
 
-        :return: None
-        """
-        # TODO: write me!
-        screen.blit(self.username, [USER_NAME_X_POS, USER_NAME_Y_POS])
-        screen.blit(self.location, [LOCATION_TEXT_X_POS, LOCATION_TEXT_Y_POS])
-        screen.blit(self.description, [DESCRIPTION_TEXT_X_POS, DESCRIPTION_TEXT_Y_POS])
-        screen.blit(self.counter_likes, [LIKE_TEXT_X_POS, LIKE_TEXT_Y_POS])
-        screen.blit(self.comments, [FIRST_COMMENT_X_POS, FIRST_COMMENT_Y_POS])
+    def display_content(self, screen):
+        pygame.draw.rect(screen, (200, 200, 200), (POST_X_POS, POST_Y_POS, POST_WIDTH, POST_HEIGHT))
 
+    def display_header(self, screen):
+        font = pygame.font.Font(None, 36)
+        location_text = font.render(f"{self.location}", True, (0, 0, 0))
+        description_text = font.render(self.description, True, (0, 0, 0))
 
+        screen.blit(location_text, (POST_X_POS + 10, POST_Y_POS - 30))
+        screen.blit(description_text, (POST_X_POS + 10, POST_Y_POS + POST_HEIGHT + 10))
+
+    def display_likes(self, screen):
+        font = pygame.font.Font(None, 36)
+        likes_text = font.render(f"Likes: {self.counter_likes}", True, (255, 0, 0))
+        screen.blit(likes_text, (POST_X_POS + POST_WIDTH - 100, POST_Y_POS + POST_HEIGHT + 10))
 
     def display_comments(self):
         """
@@ -64,6 +68,3 @@ class Post:
             position_index += 1
             if i >= NUM_OF_COMMENTS_TO_DISPLAY - 1:
                 break
-
-
-
