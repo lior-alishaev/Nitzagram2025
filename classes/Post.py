@@ -22,26 +22,52 @@ class Post:
     def add_comment(self, text):
         self.comments.append(Comment(text))
 
-    def display(self, screen):
-        self.display_content(screen)
-        self.display_header(screen)
-        self.display_likes(screen)
+    def view_more_comments(self):
+        """
+        Changes the 4 comments that the user see by changing the start index
+        of comments.
 
-    def display_content(self, screen):
-        pygame.draw.rect(screen, (200, 200, 200), (POST_X_POS, POST_Y_POS, POST_WIDTH, POST_HEIGHT))
+        :return: None
+        """
 
-    def display_header(self, screen):
-        font = pygame.font.Font(None, 36)
-        location_text = font.render(f"{self.location}", True, (0, 0, 0))
+    def reset_comments_display_index(self):
+        """
+        Restart the comments display to show the first comments on the list
+        Used when re-viewing the post.
+
+        :return: None
+        """
+
+
+    def display(self):
+        self.display_content()
+        self.display_header()
+        self.display_likes()
+        self.display_comments()
+
+    def display_content(self):
+        #pygame.draw.rect(screen, (200, 200, 200), (POST_X_POS, POST_Y_POS, POST_WIDTH, POST_HEIGHT))
+        pass
+
+    def display_header(self):
+        font = pygame.font.Font('chalkduster.ttf', 36)
+        location_text = font.render(self.location, True, (0, 0, 0))
         description_text = font.render(self.description, True, (0, 0, 0))
+        username_text = font.render(self.username, True, (0, 0, 0))
 
-        screen.blit(location_text, (POST_X_POS + 10, POST_Y_POS - 30))
-        screen.blit(description_text, (POST_X_POS + 10, POST_Y_POS + POST_HEIGHT + 10))
 
-    def display_likes(self, screen):
-        font = pygame.font.Font(None, 36)
-        likes_text = font.render(f"Likes: {self.counter_likes}", True, (255, 0, 0))
-        screen.blit(likes_text, (POST_X_POS + POST_WIDTH - 100, POST_Y_POS + POST_HEIGHT + 10))
+        # screen.blit(location_text, (POST_X_POS + 10, POST_Y_POS - 30))
+        # screen.blit(description_text, (POST_X_POS + 10, POST_Y_POS + POST_HEIGHT + 10))
+
+        screen.blit(username_text, (USER_NAME_X_POS, USER_NAME_Y_POS))
+        screen.blit(location_text, (POST_X_POS, POST_Y_POS))
+        screen.blit(description_text, (POST_X_POS, POST_Y_POS + POST_HEIGHT))
+
+    def display_likes(self):
+        font = pygame.font.Font('chalkduster.ttf', 36)
+        likes_text = font.render("Likes: " + str(self.counter_likes) ,True,   (255, 0, 0))
+        # screen.blit(likes_text, (POST_X_POS + POST_WIDTH - 100, POST_Y_POS + POST_HEIGHT + 10))
+        screen.blit(likes_text, (POST_X_POS + POST_WIDTH, POST_Y_POS + POST_HEIGHT))
 
     def display_comments(self):
         """
