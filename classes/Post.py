@@ -54,7 +54,7 @@ class Post:
         pass
 
     def display_header(self):
-        font = pygame.font.Font('chalkduster.ttf', 36)
+        font = pygame.font.Font('fonts/CRIALTRIAL.ttf', 36)
         location_text = font.render(self.location, True, BLACK)
         description_text = font.render(self.description, True, BLACK)
         username_text = font.render(self.username, True, BLACK)
@@ -64,7 +64,7 @@ class Post:
         screen.blit(description_text, (POST_X_POS, POST_Y_POS + POST_HEIGHT))
 
     def display_likes(self):
-        font = pygame.font.Font('chalkduster.ttf', 36)
+        font = pygame.font.Font('fonts/CRIALTRIAL.ttf', 36)
         likes_text = font.render("Likes: " + str(self.counter_likes) ,True,   (255, 0, 0))
         screen.blit(likes_text, (POST_X_POS + POST_WIDTH, POST_Y_POS + POST_HEIGHT))
 
@@ -78,7 +78,7 @@ class Post:
         position_index = self.comments_display_index
         # If there are more than 4 comments, print "view more comments"
         if len(self.comments) > NUM_OF_COMMENTS_TO_DISPLAY:
-            comment_font = pygame.font.SysFont('chalkduster.ttf', COMMENT_TEXT_SIZE)
+            comment_font = pygame.font.Font('fonts/CRIALTRIAL.ttf', COMMENT_TEXT_SIZE)
             view_more_comments_button = comment_font.render("view more comments",True, LIGHT_GRAY)
             screen.blit(view_more_comments_button, (VIEW_MORE_COMMENTS_X_POS, VIEW_MORE_COMMENTS_Y_POS))
 

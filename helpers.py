@@ -49,11 +49,8 @@ def mouse_in_button(button, mouse_pos):
 
 
 def draw_comment_text_box():
-    pygame.draw.rect(screen, GREY, pygame.Rect(
-        VIEW_MORE_COMMENTS_X_POS, VIEW_MORE_COMMENTS_Y_POS, 300, 20))
-    pygame.draw.rect(screen, WHITE,
-                     pygame.Rect(VIEW_MORE_COMMENTS_X_POS + 1,
-                                 VIEW_MORE_COMMENTS_Y_POS + 1, 298, 18))
+    pygame.draw.rect(screen, GREY, pygame.Rect(VIEW_MORE_COMMENTS_X_POS, VIEW_MORE_COMMENTS_Y_POS, 300, 20))
+    pygame.draw.rect(screen, WHITE, pygame.Rect(VIEW_MORE_COMMENTS_X_POS, VIEW_MORE_COMMENTS_Y_POS, 298, 18))
     pygame.display.flip()
 
 
@@ -82,11 +79,9 @@ def read_comment_from_user():
                     new_comment = new_comment[:-1]
                 else:
                     new_comment += event.unicode
-                font2 = pygame.font.SysFont('chalkduster.ttf', UI_FONT_SIZE, bold=False)
+                font2 = pygame.font.SysFont('fonts/CRIALTRIAL.ttf', UI_FONT_SIZE, bold=False)
                 img2 = font2.render(new_comment, True, (50, 50, 50))
-                screen.blit(img2,
-                            (VIEW_MORE_COMMENTS_X_POS + 1,
-                             VIEW_MORE_COMMENTS_Y_POS + 1))
+                screen.blit(img2,(VIEW_MORE_COMMENTS_X_POS, VIEW_MORE_COMMENTS_Y_POS))
                 pygame.display.update()
     return new_comment
 
@@ -103,13 +98,11 @@ def center_text(num_of_rows, text_to_display, row_number):
     :return: tuple
         position of centered text
     """
-    horizontal_margin = \
-        (POST_HEIGHT - num_of_rows * TEXT_POST_FONT_SIZE) // 2
+    horizontal_margin = (POST_HEIGHT - num_of_rows * TEXT_POST_FONT_SIZE) // 2
     # Get the text object size (height and width)
     text_rect = text_to_display.get_rect()
     # Center the text to the center of X axis
     text_rect.x = ((POST_WIDTH - text_rect.width) // 2) + 20
     # Center the text to the center of the post on Y axis
-    text_rect.y = (POST_Y_POS + horizontal_margin +
-                   row_number * TEXT_POST_FONT_SIZE)
+    text_rect.y = (POST_Y_POS + horizontal_margin + row_number * TEXT_POST_FONT_SIZE)
     return text_rect
