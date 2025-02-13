@@ -61,12 +61,12 @@ class Post:
 
         screen.blit(username_text, (USER_NAME_X_POS, USER_NAME_Y_POS))
         screen.blit(location_text, (POST_X_POS, POST_Y_POS))
-        screen.blit(description_text, (POST_X_POS, POST_Y_POS + POST_HEIGHT))
+        screen.blit(description_text, (POST_X_POS + 10, POST_Y_POS + POST_HEIGHT))
 
     def display_likes(self):
         font = pygame.font.Font('fonts/CRIALTRIAL.ttf', 36)
         likes_text = font.render("Likes: " + str(self.counter_likes) ,True,   (255, 0, 0))
-        screen.blit(likes_text, (POST_X_POS + POST_WIDTH, POST_Y_POS + POST_HEIGHT))
+        screen.blit(likes_text, (POST_X_POS, POST_Y_POS + POST_HEIGHT))
 
     def display_comments(self):
         """

@@ -35,22 +35,12 @@ def main():
     next_post_button = Button(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT)
 
     while running:
-        screen.fill(WHITE)
+        screen.fill((0, 0, 0))
+
+        screen.blit(background, (0, 0))
+
         current_post = posts[current_post_index]
         current_post.display()
-
-        pygame.draw.rect(screen, GREY, pygame.Rect(like_button.x_pos, like_button.y_pos, like_button.width, like_button.height))
-        pygame.draw.rect(screen, GREY, pygame.Rect(comment_button.x_pos, comment_button.y_pos, comment_button.width,comment_button.height))
-        pygame.draw.rect(screen, GREY,pygame.Rect(share_button.x_pos, share_button.y_pos, share_button.width, share_button.height))
-
-        font = pygame.font.SysFont('Arial', 20, bold=True)
-        like_text = font.render("♥", True, BLACK)
-        comment_text = font.render("💬", True, BLACK)
-        share_text = font.render("➤", True, BLACK)
-
-        screen.blit(like_text, (like_button.x_pos, like_button.y_pos))
-        screen.blit(comment_text, (comment_button.x_pos, comment_button.y_pos))
-        screen.blit(share_text, (share_button.x_pos, share_button.y_pos))
 
         pygame.display.flip()
 
@@ -75,6 +65,7 @@ def main():
                     current_post_index += 1
                     if current_post_index >= len(posts):
                         current_post_index = 0
+
 
         pygame.display.update()
         clock.tick(60)
