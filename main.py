@@ -61,6 +61,9 @@ def main():
                 elif share_button.x_pos <= mouse_pos[0] <= share_button.x_pos + share_button.width and \
                         share_button.y_pos <= mouse_pos[1] <= share_button.y_pos + share_button.height:
                     print("Post Shared!")
+                elif view_more_comments_button.x_pos <= mouse_pos[0] <= view_more_comments_button.x_pos + view_more_comments_button.width and \
+                        view_more_comments_button.y_pos <= mouse_pos[1] <= view_more_comments_button.y_pos + view_more_comments_button.height:
+                    posts[current_post_index].view_more_comments()
                 else:
                     current_post_index += 1
                     if current_post_index >= len(posts):
